@@ -1,0 +1,192 @@
+.wrapper {
+  position: relative;
+  font-family: 'Manjari', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* ここからheader */
+
+header {
+  position: absolute;
+  position: fixed;
+  width: 100%;
+  padding-bottom: 140px;
+  background-color: #f8f2e2;
+  opacity: 0.5;
+}
+
+#list_second {
+  display: flex;
+  flex-direction: row;
+}
+
+#name {
+  float: right;
+}
+
+ul {
+  list-style: none;
+}
+
+ul a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li:first-child {
+  font-size: 150%;
+}
+
+li:nth-child(2) {
+  margin-left: 8rem;
+}
+
+ul a:hover {
+  text-decoration: none;
+  color: rgba(9, 9, 9, 0.5);();
+}
+
+#links {
+  display: flex;
+}
+
+.link {
+  margin-right: 1rem;
+}
+
+/* ここからmain */
+
+#main.container{
+  height: 1000px;
+  padding-top: 250px;
+}
+
+.box1 {
+  /* position: absolute; */
+  background-color: brown;
+  height: 300px;
+  opacity: 0.5;
+  border-radius: 3px;
+  top: -150px;
+}
+
+.box2 {
+  /* position: absolute; */
+  background-color: green;
+  height: 500px;
+  opacity: 0.5;
+  border-radius: 3px;
+  right: 70px;
+  /* top: 250px; */
+  text-align: right;
+  letter-spacing: 2px;
+}
+
+.box3 {
+  position: relative;
+  /* position: absolute; */
+  background-color: black;
+  margin-left: 10rem !important;
+  color: white;
+  height: 500px;
+  opacity: 0.2;
+  border-radius: 180px;
+  /* top: 200px; */
+  text-align: left;
+  letter-spacing: 4px;
+}
+.box3 p {
+  position: absolute;
+  top: 100px;
+  left: 70px;
+  width: 40%;
+}
+
+/* ここからwords */
+
+#words {
+  display: flex;
+  margin-top: 140px;
+  background-color: black;
+  opacity: 0.7;
+  height: 600px;
+}
+
+#words-text-wrapper {
+  margin-top: 270px;
+}
+
+#words q {
+  quotes: "“""”";
+  font-size: 3rem;
+  opacity: 0.7;
+  color: #dedede;
+}
+
+#words p {
+  font-size: 2rem;
+  opacity: 0.7;
+  color: #dedede;
+  text-align: right;
+}
+
+#words q::before {
+  content: open-quote;
+}
+
+#words q::after {
+  content: close-quote;
+}
+
+/* ここからhow to use */
+
+#how-to-use {
+  height: 1000px;
+  background-color: pink;
+}
+
+/* ここからregister */
+
+#register {
+  height: 600px;
+}
+
+.form {
+  margin-top: 6rem;
+  margin-left: 15rem;
+}
+
+.form p {
+  font-size: 3rem;
+}
+
+.required {
+  color: red;
+  font-size: 60%;
+  margin-left: 5px;
+  border: 2px solid red;
+}
+
+#submit {
+  border: 1px solid black;
+  margin-left: 50rem;
+}
+
+#submit:hover {
+  border: 1px solid gray;
+}
+
+/* ここからform */
+
+dl {
+  font-family: 'Manjari', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+
+}
+
+#check-form.check-form-content {
+
+}

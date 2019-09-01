@@ -1,26 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>TITLE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://kit.fontawesome.com/e0db66e20b.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Manjari|Raleway&display=swap" rel="stylesheet">
+  <title>MotivaTellers</title>
 </head>
+
 <body>
+  <div class="wrapper bg-light pb-5">
+
+    <!-- <nav> -->
     <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light float-right">
+          <a href="" class="navbar-brand">
+            icon
+          </a>
+          <div id="menu">
+            <ul id="links">
+              <li class="link"><a href="">Registration</a></li>
+              <li id="list_second" class="link"><span class="mr-2">CreatedBy</span><a href="https://github.com/shunyaendoh">
+                <i class="fab fa-github-alt"></i><span id="name" class="d-none d-md-block">shunya_endoh</span>
+              </a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-    </header>   
-    
-    <div id="main_content">
-        <h1>Motivate yourself.</h1>
-        <form action=""></form>
-
+    <div id="main" class="container">
+      <div class="row bg-light pl-5">
+        <div class="box1 col-3"></div>
+        <div class="box2 col-2">
+          <p>This website is for those who want to maintain motivation. If you are that type of person, scroll down. Then it will come true and dreams also.</p>
+        </div>
+        <div class="box3 col-5 ml-5">
+          <p>It is easy to set up. Register your name, email address and password. It is enough. If you want to upload a profile pic, you can. If you want to unsubscribe from this service, you can also.</p>
+        </div>
+      </div>
     </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="./assets/js/app.js"><script>
-</body>
+
+<!-- ここから名言 -->
+    <div id="words">
+      <div class="container">
+        <!-- jsで動的に文字列を変化させる(配列を使う) -->
+        <div id="words-text-wrapper">
+          <q>　Dreams do not run away. I always run away.　</q>
+          <p>-Ayumu Takahashi</p>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- ここから使用方法(保留) -->
+  <div id="how-to-use">
+    <div class="container">
+      <p>使用例を画像を用いて説明する.</p>
+    </div>
+  </div>
+
+  <!-- ここから会員登録 -->
+  <div id="register">
+    <div class="container">
+      <div class="form">
+        <p>Please complete the form</p>
+        <form class="ml-5" action="./assets/php/check.php" method="post" enctype="">
+          <dl>
+            <dt>name<span class="required">required</span></dt>
+            <dd class="mb-3 ml-3"><input type="text" name="name" size="35" maxlength="255" /></dd>
+
+            <dt>email address<span class="required">required</span></dt>
+            <dd class="mb-3 ml-3"><input type="text" name="email" size="35" maxlength="255" /></dd>
+
+            <dt>password<span class="required">required</span></dt>
+            <dd class="mb-3 ml-3"><input type="password" name="password" size="10" maxlength="20" /></dd>
+
+            <dt>profile image</dt>
+            <dd class="mb-5 ml-3"><input type="file" name="image" size="35" /></dd>
+
+            <div><input id="submit" type="submit" value="submit"></div>
+          </dl>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- /wrapper -->
+</div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="./assets/js/app.js"></script>
+    </body>
 </html>
