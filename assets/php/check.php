@@ -23,7 +23,7 @@
             <dt>profile image:　</dt>
             <dd></dd>
         </dl>
-        <div><a href="../../index.html?action=rewrite">&laquo;&nbsp;rewrite</a> | <input type="submit" value="register"></div>
+        <div><a href="../../index.php?action=rewrite">&laquo;&nbsp;rewrite</a> | <input type="submit" value="register"></div>
 
         </form>
 

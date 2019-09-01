@@ -1,12 +1,19 @@
 <?php
+// ini_set("display_errors", 0);
+// error_reporting(E_ALL);
 function h($s) {
   return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
 }
 
+// $_POST['name'] = '';
+// $_POST['email'] = '';
+// $_POST['password'] = '';
+// $_POST['image'] = '';
+
 session_start();
 if (!empty($_POST)) {
 
-    //エラー項目の確認
+    // エラー項目の確認
     if ($_POST['name'] == '') {
         $error['name'] = 'blank';
     }
@@ -20,12 +27,25 @@ if (!empty($_POST)) {
     if (strlen($_POST['password']) < 4) {
         $error['password'] = 'length';
     }
-    if (empty($error)) {
-        $_SESSION['join'] = $_POST;
-        header('Location: check.php');
-        exit();
+    // ファイルの種類の判別とエラーの取得
+    $fileNames = $_FILES['image']['name'];
+    if (!empty($fileNames)) {
+      $ext = substr($fileNames, -3);
+      if ($ext != 'jpg' && $ext != 'gif') {
+        $error['image'] ='type';
+      }
     }
-}
+    if (empty($error)) {
+    // 画像のアップロード
+      $image = date('YmdHis') . $_FILES['image']['name'];
+      move_uploaded_file($_FILES['image']['tmp_name'], '../member_picture/' . $image);
+
+      $_SESSION['join'] = $_POST;
+      $_SESSION['join']['image'] = $image;
+      header('Location: ./assets/php/check.php');
+      exit();
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -100,37 +120,66 @@ if (!empty($_POST)) {
     <div class="container">
       <div class="form">
         <p>Please complete the form</p>
-        <form class="ml-5" action="index.php" method="post" enctype="multipart/form-data">
+        <form class="ml-5" action="" method="post" enctype="multipart/form-data">
           <dl>
             <dt>name<span class="required">required</span></dt>
             <dd class="mb-3 ml-1">
-                <input type="text" name="name" size="35" maxlength="255" value="<?php echo h($_POST['name']); ?>"/>
-                <?php if ($error['name'] == 'blank') : ?>
-                <p class="error">*Fill in the blank.</p>
-            <?php endif; ?>
+                <input type="text" name="name" size="35" maxlength="255" value="<?php 
+                if (!empty($_POST['name'])) {
+                  $name = $_POST['name'];
+                  echo h($name); } ?>"/>
+                <?php 
+                if (!empty($error['name'])) {
+                  if ($error['name'] == 'blank') : ?>
+                    <p class="error">*Fill in the blank.</p>
+            <?php endif; } ?>
             </dd>
 
             <dt>email address<span class="required">required</span></dt>
             <dd class="mb-3 ml-1">
-              <input type="text" name="email" size="35" maxlength="255" value="<?php echo h($_POST['email']); ?>"/>
-              <?php if ($error['email'] == 'blank') : ?>
-                <p class="error">*Fill in the blank.</p>
-            <?php endif; ?>
+              <input type="text" name="email" size="35" maxlength="255" value="<?php 
+              if (!empty($_POST['email'])) {
+                $email = $_POST['email'];
+                echo h($email); } ?>"/>
+              <?php 
+              if (!empty($error['email'])) {
+                if ($error['email'] == 'blank') : ?>
+                 <p class="error">*Fill in the blank.</p>
+            <?php endif; } ?>
             </dd>
 
             <dt>password<span class="required">required</span></dt>
             <dd class="mb-3 ml-1">
-              <input type="password" name="password" size="10" maxlength="20" value="<?php echo h($_POST['password']); ?>"/>
-              <?php if ($error['password'] == 'blank'): ?>
-                <p class="error">*Fill in the blank.</p>
-              <?php endif; ?>
-              <?php if ($error['password'] == 'length'): ?>
-                <p class="error">*Must be at least 4 letters.</p>
-              <?php endif; ?>
+              <input type="password" name="password" size="10" maxlength="20" value="<?php 
+              if (!empty($_POST['password'])) {
+                $password = $_POST['password'];
+                echo h($password); } ?>"/>
+              <?php
+              if (!empty($error['password'])) { 
+                if ($error['password'] == 'blank') : ?>
+                  <p class="error">*Fill in the blank.</p>
+              <?php endif; } ?>
+              <?php 
+              if(!empty($error['password'])) {
+                if ($error['password'] == 'length') : ?>
+                  <p class="error">*Must be at least 4 letters.</p>
+              <?php endif; } ?>
             </dd>
 
             <dt>profile image</dt>
-            <dd class="mb-5 ml-1"><input type="file" name="image" size="35" /></dd>
+            <dd class="mb-5 ml-1">
+              <input type="file" name="image" size="35" />
+              <?php
+              if(!empty($error['image'])) {
+                if ($error['image'] == 'type'): ?>
+                <p class="error">*Use an extension with gif or jpg.</p>
+              <?php endif; } ?>
+
+              <?php
+                if (!empty($error)): ?>
+                <p class="error">*Please specify the image again.</p>
+              <?php endif; ?>
+            </dd>
 
             <div><input id="submit" type="submit" value="submit"></div>
           </dl>
@@ -145,5 +194,6 @@ if (!empty($_POST)) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="./assets/js/app.js"></script>
+  
 </body>
 </html>
