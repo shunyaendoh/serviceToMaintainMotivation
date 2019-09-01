@@ -3,6 +3,7 @@
   font-family: 'Manjari', sans-serif;
   font-family: 'Lato', sans-serif;
   font-family: 'Raleway', sans-serif;
+  padding-bottom: 12rem;
 }
 
 /* ここからheader */
@@ -187,3 +188,7 @@ dl {
 
 }
 
+.error {
+  color: red;
+  font-size: 24px !important;
+}
