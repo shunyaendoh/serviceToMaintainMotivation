@@ -188,6 +188,11 @@ dl {
 
 }
 
+input:focus {
+  outline: 0;
+  border-color: orange;
+}
+
 .error {
   color: red;
   font-size: 24px !important;

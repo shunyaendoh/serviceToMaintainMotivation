@@ -46,6 +46,14 @@ if (!empty($_POST)) {
       exit();
     }
   }
+
+  if (!empty($_REQUEST['action'])){
+    if ($_REQUEST['action'] == 'rewrite') {
+      $_POST = $_SESSION['join'];
+      $error['rewrite'] = true;
+    }
+  }
+
 ?>
 
 <!DOCTYPE html>
