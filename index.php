@@ -1,6 +1,8 @@
 <?php
 // ini_set("display_errors", 0);
 // error_reporting(E_ALL);
+require_once('./dbconnect.php');
+
 function h($s) {
   return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
 }
@@ -35,6 +37,17 @@ if (!empty($_POST)) {
         $error['image'] ='type';
       }
     }
+
+    // 重複アカウントの判別
+    if (empty($error)) {
+      $member = $dbh->prepare('SELECT COUNT(*) AS cnt FROM members WHERE email=?');
+      $member->execute(array($_POST['email']));
+      $record = $member->fetch();
+      if ($record['cnt'] > 0) {
+        $error['email'] = 'duplicate';
+      }
+    }
+
     if (empty($error)) {
     // 画像のアップロード
       $image = date('YmdHis') . $_FILES['image']['name'];
@@ -153,7 +166,13 @@ if (!empty($_POST)) {
               if (!empty($error['email'])) {
                 if ($error['email'] == 'blank') : ?>
                  <p class="error">*Fill in the blank.</p>
-            <?php endif; } ?>
+              <?php endif;  ?>
+              <?php 
+                if ($error['email'] == 'duplicate') : ?>
+                 <p class="error">*This email address has already been registered.</p>
+              <?php endif; } ?>
+              
+
             </dd>
 
             <dt>password<span class="required">required</span></dt>
