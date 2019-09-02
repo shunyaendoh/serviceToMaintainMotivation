@@ -1,3 +1,34 @@
+<?php 
+session_start();
+
+require_once('../../dbconnect.php');
+
+function h($s) {
+    return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
+  }
+  
+if (!isset($_SESSION['join'])) {
+    header('Location: index.php');
+    exit();
+}
+
+
+if (!empty($_SESSION['join'])) {
+	$statement = $dbh->prepare('INSERT INTO members SET name=?, email=?,	password=?, picture=?, created=NOW()');
+	echo $ret = $statement->execute(array(
+		$_SESSION['join']['name'],
+		$_SESSION['join']['email'],
+		sha1($_SESSION['join']['password']),
+		$_SESSION['join']['image']
+		));
+		unset($_SESSION['join']);
+		// header('Location: thanks.php');
+		exit();
+	}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
