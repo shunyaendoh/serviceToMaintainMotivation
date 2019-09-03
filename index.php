@@ -33,7 +33,7 @@ if (!empty($_POST)) {
     $fileNames = $_FILES['image']['name'];
     if (!empty($fileNames)) {
       $ext = substr($fileNames, -3);
-      if ($ext != 'jpg' && $ext != 'gif') {
+      if ($ext != 'jpg' && $ext != 'gif' && $ext != 'JPG' && $ext != 'GIF') {
         $error['image'] ='type';
       }
     }
